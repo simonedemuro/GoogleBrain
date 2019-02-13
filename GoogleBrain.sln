@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleBrain", "GoogleBrain\GoogleBrain.csproj", "{048A2F03-DF9A-4743-8DC7-EB23F15BC990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleBrain.xTest", "GoogleBrain.xTest\GoogleBrain.xTest.csproj", "{51B73694-901F-40E2-9860-338088D82B75}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{048A2F03-DF9A-4743-8DC7-EB23F15BC990}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{048A2F03-DF9A-4743-8DC7-EB23F15BC990}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{048A2F03-DF9A-4743-8DC7-EB23F15BC990}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{048A2F03-DF9A-4743-8DC7-EB23F15BC990}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51B73694-901F-40E2-9860-338088D82B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51B73694-901F-40E2-9860-338088D82B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51B73694-901F-40E2-9860-338088D82B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51B73694-901F-40E2-9860-338088D82B75}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1041D7C1-9866-4BD2-8380-F4F5B623B9C2}
+	EndGlobalSection
+EndGlobal
