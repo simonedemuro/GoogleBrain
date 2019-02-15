@@ -10,7 +10,7 @@ namespace GoogleBrain.xTest
         [Fact]
         public void RetrieveValidHTML()
         {
-            Gbrain b = new Gbrain();
+            GbrainAPI b = new GbrainAPI();
             string myPage = b.GetPlainPage("http://www.gooogle.com");
 
             Assert.Contains("<html", myPage);
@@ -19,7 +19,7 @@ namespace GoogleBrain.xTest
         [Fact]
         public void ConcatPathCorrectly()
         {
-            Gbrain b = new Gbrain();
+            GbrainAPI b = new GbrainAPI();
             string myURL = b.GenerateSearchURL("this", "is", "a", "test");
 
             Assert.Equal("https://www.google.com/search?q=this+is+a+test", myURL);
@@ -28,7 +28,7 @@ namespace GoogleBrain.xTest
         [Fact]
         public void GetGoogleNumberOfResults()
         {
-            Gbrain b = new Gbrain();
+            GbrainAPI b = new GbrainAPI();
 
             long results = b.GetNumerOfResults("this", "is", "a", "test");
 

@@ -8,17 +8,10 @@ using System.Linq;
 
 namespace GoogleBrain
 {
-    public class Gbrain
+    public class GbrainAPI
     {
         private const string GoogleBaseQueryString = "https://www.google.com/search?q=";
         private const string ResultDiv = "resultStats";
-
-        private string GetPlainPage(string URL)
-        {
-            WebClient client = new WebClient();
-            string downloadString = client.DownloadString(URL);
-            return downloadString;
-        }
 
         public long GetNumerOfResults(params string[] keywords)
         {
@@ -29,6 +22,13 @@ namespace GoogleBrain
             long numResult = GetNumberOfResultsFromDiv(divHTML);
         
             return numResult;
+        }
+
+        private string GetPlainPage(string URL)
+        {
+            WebClient client = new WebClient();
+            string downloadString = client.DownloadString(URL);
+            return downloadString;
         }
 
         private string GenerateSearchURL(params string[] keywords)

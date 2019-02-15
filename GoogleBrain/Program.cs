@@ -7,7 +7,7 @@ namespace GoogleBrain
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Gbrain g = new Gbrain();
+            GbrainAPI g = new GbrainAPI();
 
             long colombo = g.GetNumerOfResults("chi ha scoperto l'america?", "Colombo");
             Console.WriteLine("chi ha scoperto l'america?, Colombo ("+ colombo + ")");
