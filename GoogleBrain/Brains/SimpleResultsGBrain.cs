@@ -24,7 +24,7 @@ namespace GoogleBrain.Brains
 
         public IGAnswer AnswerQuestion(string Question, params string[] Answers)
         {
-            if (Question.IndexOfAny(@"""#$%&'()*+,-./:;<=>@[\]^_`{|}~".ToCharArray()) != -1)
+            if (Question.IndexOfAny(@"""#$%&()*+,-./:;<=>@[\]^_`{|}~".ToCharArray()) != -1)
             {
                 throw new BadRequestException("the request contains one or more forbidden characters");
             }

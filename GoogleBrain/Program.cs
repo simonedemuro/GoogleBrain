@@ -1,4 +1,7 @@
 ﻿using System;
+using GoogleBrain;
+using GoogleBrain.Brains;
+using GoogleBrain.Models;
 
 namespace GoogleBrain
 {
@@ -6,22 +9,19 @@ namespace GoogleBrain
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             GbrainAPI g = new GbrainAPI();
-
-            long colombo = g.GetNumerOfResults("chi ha scoperto l'america?", "Colombo");
-            Console.WriteLine("chi ha scoperto l'america?, Colombo ("+ colombo + ")");
-
-            long micky = g.GetNumerOfResults("chi ha scoperto l'america?", "Miky Mouse");
-            Console.WriteLine("chi ha scoperto l'america?, Miky Mouse(" + micky + ")");
-
-            Console.WriteLine();
-
+            SimpleResultsGBrain SimplestBrain = new SimpleResultsGBrain();
+            Utils.VisualUtils.PrintHeader();
+        
             while (true)
             {
-                string input = Console.ReadLine();
-                long resNum = g.GetNumerOfResults(input);
-                Console.WriteLine(resNum);
+                Console.Write("Type a question > ");
+                string question = Console.ReadLine();
+                Console.Write("Type possible answers comma separed > ");
+                string[] answers = Console.ReadLine().Split(',');
+
+                IGAnswer CorrectAns = SimplestBrain.AnswerQuestion(question, answers);
+                Utils.VisualUtils.WriteCorrectAnswer(CorrectAns);
             }
 
             Console.Read();
