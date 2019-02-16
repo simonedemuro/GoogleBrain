@@ -24,6 +24,21 @@ namespace GoogleBrain
             return numResult;
         }
 
+        public int GetNumberOfOccourrences(string question, string answer)
+        {
+            string URL = GenerateSearchURL(new string[] { question });
+            string resultPage = GetPlainPage(URL);
+            resultPage = GetHtmlFreeText(resultPage);
+
+            int numberOfMatches = Regex.Matches(resultPage, answer, RegexOptions.IgnoreCase).Count;
+            return numberOfMatches;
+        }
+
+        private static string GetHtmlFreeText(string htmlPage)
+        {
+            return Regex.Replace(htmlPage, "<.*?>", String.Empty);
+        }
+
         private string GetPlainPage(string URL)
         {
             WebClient client = new WebClient();
