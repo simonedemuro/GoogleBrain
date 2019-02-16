@@ -6,13 +6,19 @@ namespace GoogleBrain.Models
 {
     public class GAnswer : IGAnswer
     {
-        private string correctAnswer;
-        private int correctAnswerConfidence;
+        public string CorrectAnswer { get; set; }
+        public int CorrectAnswerConfidence { get; set; }
+        public List<GOptions> WrongAnswers { get; set; }
 
-        private List<GOptions> wrongAnswers;
+        public GAnswer()
+        {
 
-        public string CorrectAnswer { get => correctAnswer; set => correctAnswer = value; }
-        public int CorrectAnswerConfidence { get => correctAnswerConfidence; set => correctAnswerConfidence = value; }
-        public List<GOptions> WrongAnswers { get => wrongAnswers; set => wrongAnswers = value; }
+        }
+
+        public GAnswer(string correctAnswer, int correctAnswerConfidence)
+        {
+            CorrectAnswer = correctAnswer;
+            CorrectAnswerConfidence = correctAnswerConfidence;
+        }
     }
 }

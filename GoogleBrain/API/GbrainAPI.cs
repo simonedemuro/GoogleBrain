@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GoogleBrain
 {
-    public class GbrainAPI
+    public class GbrainAPI : IGbrainAPI
     {
         private const string GoogleBaseQueryString = "https://www.google.com/search?q=";
         private const string ResultDiv = "resultStats";
@@ -27,6 +27,7 @@ namespace GoogleBrain
         private string GetPlainPage(string URL)
         {
             WebClient client = new WebClient();
+            //client.Headers.Add("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.2; .NET CLR 1.0.3705;)");
             string downloadString = client.DownloadString(URL);
             return downloadString;
         }
