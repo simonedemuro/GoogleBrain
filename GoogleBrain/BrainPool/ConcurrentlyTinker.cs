@@ -10,19 +10,26 @@ namespace GoogleBrain.BrainPool
 {
     class ConcurrentlyTinker
     {
-        public List<IGAnswer> GetAnswers(ThinckerArgs thinkerArgs)
+        private ThinckerArgs ThinckerArgs;
+
+        public ConcurrentlyTinker(ThinckerArgs thinckerArgs)
         {
-            int brainsNumber = thinkerArgs.Brains.Count;
+            this.ThinckerArgs = thinckerArgs;
+        }
+
+        public List<IGAnswer> GetAnswers()
+        {
+            int brainsNumber = ThinckerArgs.Brains.Count;
             Task<IGAnswer>[] answersFromTasks = new Task<IGAnswer>[brainsNumber];
 
             int brainCtr = 0;
             // TODO: start task in order from the slower to the faster
-            foreach (var Brain in thinkerArgs.Brains)
+            foreach (var Brain in ThinckerArgs.Brains)
             {
                 answersFromTasks[brainCtr] = Task.Factory
-                    .StartNew(() => Brain.Value.AnswerQuestion(thinkerArgs.Question, thinkerArgs.Answers));
+                    .StartNew(() => Brain.Value.AnswerQuestion(ThinckerArgs.Question, ThinckerArgs.Answers));
 
-                if (thinkerArgs.EnableConsoleOutput)
+                if (ThinckerArgs.EnableConsoleOutput)
                 {
                     answersFromTasks[brainCtr]
                         .ContinueWith((t) => Utils.VisualUtils.WriteCorrectAnswer(t.Result, Brain.Key));
@@ -31,6 +38,7 @@ namespace GoogleBrain.BrainPool
             }
             Task.WaitAll(answersFromTasks);
             return answersFromTasks.ToGAnswerList();
+            
         }
     }
 }

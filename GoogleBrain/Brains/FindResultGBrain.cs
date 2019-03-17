@@ -36,7 +36,7 @@ namespace GoogleBrain.Brains
             KeyValuePair<string, long> CorrectAns = OptionNumberResults
                 .FirstOrDefault(x => x.Value == OptionNumberResults.Values.Max());
 
-            return new GAnswer(CorrectAns.Key, 10);
+            return new GAnswer(CorrectAns.Key, this.GetType().Name);
         }
     }
 }

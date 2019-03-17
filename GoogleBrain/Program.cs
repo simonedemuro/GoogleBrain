@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using GoogleBrain;
+using GoogleBrain.BrainPool;
 using GoogleBrain.Brains;
 using GoogleBrain.Models;
 
@@ -23,23 +24,25 @@ namespace GoogleBrain
             while (true)
             {
                 Console.Write("Type a question > ");
-                string question = Console.ReadLine();
+                string usrQuestion = Console.ReadLine();
                 Console.Write("Type possible answers comma separed > ");
-                string[] answers = Console.ReadLine().Split(',');
+                string[] usrAnswers = Console.ReadLine().Split(',');
 
-                Task<IGAnswer>[] answerTasks = new Task<IGAnswer>[Brains.Count];
-                int brainCtr = 0;
-                foreach (var Brain in Brains)
+                ThinckerArgs thinckerArgs = new ThinckerArgs()
                 {
-                    answerTasks[brainCtr] = Task.Factory
-                        .StartNew(() => Brain.Value.AnswerQuestion(question, answers));
+                    Question = usrQuestion,
+                    Answers = usrAnswers,
+                    Brains = Brains,
+                    EnableConsoleOutput = false
+                };
+                ConcurrentlyTinker concurrentlyTinker = new ConcurrentlyTinker(thinckerArgs);
+                List<IGAnswer> brainsAnswers = concurrentlyTinker.GetAnswers();
 
-                    answerTasks[brainCtr]
-                        .ContinueWith((t) => Utils.VisualUtils.WriteCorrectAnswer(t.Result, Brain.Key));
-
-                    brainCtr++; 
+                foreach (var answer in brainsAnswers)
+                {
+                    Console.WriteLine(answer.Interlocutor + 
+                        " Says: " + " the correct answer is: "  + answer.CorrectAnswer);
                 }
-                Task.WaitAll(answerTasks);
                 Console.WriteLine();
             }
             Console.Read();

@@ -9,6 +9,7 @@ namespace GoogleBrain.Models
         public string CorrectAnswer { get; set; }
         public int CorrectAnswerConfidence { get; set; }
         public List<GOptions> WrongAnswers { get; set; }
+        public string Interlocutor { get; set; }
 
         public GAnswer()
         {
@@ -19,6 +20,12 @@ namespace GoogleBrain.Models
         {
             CorrectAnswer = correctAnswer;
             CorrectAnswerConfidence = correctAnswerConfidence;
+        }
+
+        public GAnswer(string correctAnswer, string interlocutor)
+        {
+            CorrectAnswer = correctAnswer;
+            Interlocutor = interlocutor;
         }
     }
 }
