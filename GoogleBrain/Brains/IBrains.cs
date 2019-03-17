@@ -5,7 +5,7 @@ using GoogleBrain.Models;
 
 namespace GoogleBrain.Brains
 {
-    interface IBrains
+    public interface IBrains
     {
         /// <summary>
         /// This Method performs its calculation to determine the correct answer given:
